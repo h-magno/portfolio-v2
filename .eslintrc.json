@@ -19,9 +19,10 @@
     "jsx-quotes": ["error", "prefer-single"],
     "import/no-extraneous-dependencies": "off",
     "react/jsx-one-expression-per-line": "off",
-    "space-in-parens": ["error", "always"],
+    // "space-in-parens": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "template-curly-spacing": ["error", "always"],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

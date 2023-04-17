@@ -4,11 +4,14 @@ import './index.css'
 import { useInView } from 'react-intersection-observer'
 import Tilt from 'react-parallax-tilt'
 import { useWindowSize } from 'react-use'
+import useLoading from '@/hooks/useLoading'
+import { useEffect, useState, useRef } from 'react'
 import LastProjects from './components/home/last-projects/LastProjects'
 import MainProjects from './components/home/main-projects/MainProjects'
 import HomeTitle from './components/home/home-title/HomeTitle'
 import HomeVideo from './components/home/home-video/HomeVideo'
 import Footer from './components/footer/Footer'
+import RepoSearch from './components/home/repo-seacrh/RepoSearch'
 // import HomeBG from './components/home-/home-background/HomeBG'
 
 // ! TESTANDO BETTER COMMENTS - não use
@@ -17,19 +20,23 @@ import Footer from './components/footer/Footer'
 // TODO: Testando better comments - to do
 
 const HomePage = () => {
+  const [filterValue, setFilterValue] = useState('')
   const { ref: refTitle } = useInView()
   const { width: windowWidth } = useWindowSize()
+
+  const handleSearch = (searchState: any) => {
+    setFilterValue(searchState)
+    console.log(filterValue)
+  }
 
   return (
     <>
       <div
-        className='paddingClamp sm:flex sm:flex-col-reverse md:flex md:flex-col-reverse md:pt-32 lg:grid lg:grid-cols-2 lg:pt-0  '
-        style={{
-          marginTop: windowWidth <= 768 ? '100px' : '',
-          height: windowWidth <= 1024 ? '' : '95svh',
-        }}
+        className={`${ windowWidth <= 768 ? 'mt-[100px]' : '' } ${
+          windowWidth <= 1024 ? '' : 'h-[95svh]'
+        } paddingClamp sm:flex sm:flex-col-reverse md:flex md:flex-col-reverse md:pt-32 lg:grid lg:grid-cols-2 lg:pt-0`}
       >
-        <div className=' slideRightLeft  md:paddingClamp sm:my-20 md:m-auto md:my-10 md:w-4/5 lg:my-0 lg:flex lg:w-full lg:items-center lg:justify-center lg:pt-16 xl:w-full 2xl:w-[800px]'>
+        <div className='md:paddingClamp slideRightLeft sm:my-20 md:m-auto md:my-10 md:w-4/5 lg:my-0 lg:flex lg:w-full lg:items-center lg:justify-center lg:pt-16 xl:w-full 2xl:w-[800px]'>
           <Tilt
             glareEnable
             tiltMaxAngleX={5}
@@ -44,40 +51,41 @@ const HomePage = () => {
           </Tilt>
         </div>
 
-        <div className=' flex w-full items-center justify-center align-middle md:pl-0 lg:pl-10 '>
-          <header
-            ref={refTitle}
-            className='slideLeftRight relative z-10 flex flex-col justify-center text-center'
-          >
+        <div className='flex items-center justify-center w-full align-middle md:pl-0 lg:pl-10'>
+          <header ref={refTitle} className='relative z-10 flex flex-col justify-center text-center slideLeftRight'>
             <HomeTitle />
           </header>
         </div>
       </div>
 
-      <div className=' z-10 mb-5 flex h-16 items-center justify-center  '>
+      <div className='z-10 flex items-center justify-center h-16 mb-5 '>
         <span className='absolute z-10'>PROJETOS PRINCIPAIS</span>
       </div>
-      <section
-        id='mainProjectSection'
-        className='  paddingClamp container mx-auto mb-10 grid grid-cols-1 gap-4 sm:grid-cols-1 2xl:px-52 2lg:px-0 '
-      >
-        <MainProjects />
+      <section id='mainProjectSection' className='container grid grid-cols-1 gap-4 mx-auto mb-10 paddingClamp sm:grid-cols-1 2xl:px-52 2lg:px-0'>
+        {useLoading('mainProjectSection')}
+        {/* <MainProjects /> */}
       </section>
 
-      <div className=' z-10 my-5 flex h-16 items-center justify-center  '>
+      <div className='z-10 flex items-center justify-center h-16 my-5 '>
         <span className='absolute z-10'>ÚLTIMOS PROJETOS</span>
       </div>
       <section
-        id='mainProjectSection'
-        className='paddingClamp md:px-50 container mx-auto mb-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-2 lg:px-0 xl:px-52 2lg:px-0 '
+        id='lastProjectSection'
+        className='container grid grid-cols-2 gap-4 mx-auto mb-10 paddingClamp md:px-50 sm:grid-cols-3 sm:gap-2 lg:px-0 xl:px-52 2lg:px-0 '
       >
-        <LastProjects />
+        <div className='col-span-2 m-auto sm:col-span-3'>{useLoading('lastProjectSection')}</div>
+        <div
+          className='w-full col-span-2 px-10 py-5 m-auto bg-gray-300 rounded-3xl sm:col-span-3'
+        >
+          <RepoSearch
+            onSearch={handleSearch}
+            filterValue={filterValue}
+            setFilterValue={setFilterValue} />
+        </div>
+        <LastProjects repoSearchProps={filterValue} />
       </section>
 
       <Footer />
-      <div style={{ height: '200vh' }} className='absolute top-0 -z-10 w-full'>
-        {/* <HomeBG /> */}
-      </div>
     </>
   )
 }

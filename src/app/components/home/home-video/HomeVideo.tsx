@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState, useRef, useEffect } from 'react'
 
@@ -6,55 +7,60 @@ import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import VolumeUpSharpIcon from '@mui/icons-material/VolumeUpSharp'
 
-const usePlayerState = ( videoPlayerRef: any ) => {
-  const [playerState, setPlayerState] = useState( {
+const usePlayerState = (videoPlayerRef: any) => {
+  const [playerState, setPlayerState] = useState({
     playing: true,
     muted: true,
     percentage: 0.0,
     volume: 25,
-  } )
+  })
 
-  useEffect( () => {
+  useEffect(() => {
     playerState.playing ? videoPlayerRef.current.play() : videoPlayerRef.current.pause()
-  }, [playerState.playing, videoPlayerRef] )
+  }, [playerState.playing, videoPlayerRef])
 
   const toggleVideoPlay = () => {
-    setPlayerState( {
+    setPlayerState({
       ...playerState,
       playing: !playerState.playing,
-    } )
+    })
   }
 
   const handleTimeUpdate = () => {
-    const currentPercentage = ( videoPlayerRef.current.currentTime / videoPlayerRef.current.duration ) * 100
-    setPlayerState( {
+    const currentPercentage = (videoPlayerRef.current.currentTime / videoPlayerRef.current.duration) * 100
+    setPlayerState({
       ...playerState,
       percentage: currentPercentage,
-    } )
+    })
   }
 
-  const handleChangerVideoPercentage = ( event: any ) => {
+  const handleChangerVideoPercentage = (event: any) => {
     const currentPercentageValue = event.target.value
 
-    setPlayerState( {
+    videoPlayerRef.current.currentTime = (videoPlayerRef.current.duration / 100) * currentPercentageValue
+
+    setPlayerState({
       ...playerState,
       percentage: currentPercentageValue,
-    } )
+    })
   }
 
   const handleMute = () => {
-    setPlayerState( {
+    setPlayerState({
       ...playerState,
       muted: !playerState.muted,
-    } )
+    })
   }
 
-  const handleChangerVolumePercentage = ( event: any ) => {
+  const handleChangerVolumePercentage = (event: any) => {
     const currentVolumeValue = event.target.value
-    setPlayerState( {
+
+    videoPlayerRef.current.volume = currentVolumeValue / 100
+
+    setPlayerState({
       ...playerState,
       volume: currentVolumeValue,
-    } )
+    })
   }
 
   return {
@@ -68,23 +74,23 @@ const usePlayerState = ( videoPlayerRef: any ) => {
 }
 
 const HomeVideo = () => {
-  const videoPlayerRef = useRef<any>( null )
+  const videoPlayerRef = useRef<any>(null)
   const {
     playerState, handleMute, toggleVideoPlay, handleTimeUpdate, handleChangerVideoPercentage, handleChangerVolumePercentage,
-  } = usePlayerState( videoPlayerRef )
-  const [playbackRate, setPlaybackRate] = useState( 1 )
+  } = usePlayerState(videoPlayerRef)
+  const [playbackRate, setPlaybackRate] = useState(1)
 
-  useEffect( () => {
+  useEffect(() => {
     videoPlayerRef.current.playbackRate = playbackRate
-  }, [playbackRate] )
+  }, [playbackRate])
 
-  const handlePlaybackRateChange = ( event: React.ChangeEvent<HTMLSelectElement> ) => {
-    const newPlaybackRate = parseFloat( event.target.value )
-    setPlaybackRate( newPlaybackRate )
+  const handlePlaybackRateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newPlaybackRate = parseFloat(event.target.value)
+    setPlaybackRate(newPlaybackRate)
   }
 
   return (
-    <div className='videoWrapper aspect-video w-full rounded-3xl'>
+    <div className='w-full videoWrapper aspect-video rounded-3xl'>
       <video
         loop
         autoPlay
@@ -93,18 +99,17 @@ const HomeVideo = () => {
         src='homeVideo.mp4'
         onTimeUpdate={handleTimeUpdate}
         onClick={toggleVideoPlay}
-        className='h-full w-full rounded-t-3xl'
+        className='w-full h-full rounded-t-3xl'
       >
         <track kind='captions' />
-
       </video>
 
-      <div className='controls bg-[#0819416c] backdrop-blur-sm flex h-14 items-center rounded-b-3xl'>
-        <button type='button' className='h-full w-1/5 rounded-bl-3xl' onClick={toggleVideoPlay}>
+      <div className='controls flex h-14 items-center rounded-b-3xl bg-[#0819416c] backdrop-blur-sm'>
+        <button type='button' className='w-1/5 h-full rounded-bl-3xl' onClick={toggleVideoPlay}>
           {playerState.playing ? <PauseIcon className='text-white' /> : <PlayArrowSharpIcon className='text-white' />}
         </button>
-        <div className='volume flex h-full w-1/5 items-center'>
-          <button type='button' onClick={handleMute} className='mr-1 flex h-full w-1/5 items-center'>
+        <div className='flex items-center w-1/5 h-full volume'>
+          <button type='button' onClick={handleMute} className='flex items-center w-1/5 h-full mr-1'>
             {playerState.muted ? <VolumeOffIcon /> : <VolumeUpSharpIcon />}
           </button>
 
@@ -114,7 +119,7 @@ const HomeVideo = () => {
             min='0'
             max='100'
             value={playerState.volume}
-            className='range range-success range-xs w-3/5 bg-blue-800'
+            className='w-3/5 bg-blue-800 range range-success range-xs'
           />
         </div>
 
@@ -124,16 +129,16 @@ const HomeVideo = () => {
           min='0'
           max='100'
           value={playerState.percentage}
-          className='range range-success range-xs w-3/5 bg-blue-800'
+          className='w-3/5 bg-blue-800 range range-success range-xs'
         />
 
-        <div className='f w-1/5 px-5 text-gray-900'>
-          <select className='w-full rounded-xl text-center' onChange={handlePlaybackRateChange} value={playbackRate}>
-            {[1, 1.5, 2].map( ( speed: number ) => (
+        <div className='w-1/5 px-5 text-gray-900 f'>
+          <select className='w-full text-center rounded-xl' onChange={handlePlaybackRateChange} value={playbackRate}>
+            {[1, 1.5, 2].map((speed: number) => (
               <option key={`speedChange_${ speed }`} value={speed}>
                 x{speed}
               </option>
-            ) )}
+            ))}
           </select>
         </div>
       </div>
