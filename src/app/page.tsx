@@ -80,7 +80,8 @@ const HomePage = () => {
           <RepoSearch
             onSearch={handleSearch}
             filterValue={filterValue}
-            setFilterValue={setFilterValue} />
+            setFilterValue={setFilterValue}
+          />
         </div>
         <LastProjects repoSearchProps={filterValue} />
       </section>

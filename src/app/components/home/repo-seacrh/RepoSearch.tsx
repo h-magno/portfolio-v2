@@ -57,14 +57,14 @@ const RepoSearch = (props: any) => {
 
         <div className='w-full'>
           <TextField
-            className='w-full bg-white'
+            className='w-full bg-white border-2'
             onChange={(event) => setNameSearch(event.target.value)}
           />
         </div>
       </div>
 
       <div className='flex-col w-full h-full gap-2 p-5 file:flex'>
-        <p className='mb-8 font-black uppercase'>Pesquisa por tecnologia</p>
+        <p className='mb-10 font-black uppercase'>Pesquisa por tecnologia</p>
 
         <TechsCheckbox onSelectedTechsChange={setAutocompleteSearch} />
 
@@ -127,8 +127,8 @@ const RepoSearch = (props: any) => {
 }
 
 export default RepoSearch
-
-// import { TextField } from '@mui/material'
+//
+// // import { TextField } from '@mui/material'
 // import { useState, useEffect } from 'react'
 // import './RepoSearch.css'
 // import TechsCheckbox from './techs-checkbox/TechsChekbox'
@@ -165,7 +165,7 @@ export default RepoSearch
 //       <div className='flex-col w-full h-full gap-2 p-5 file:flex'>
 //         <p className='mb-8 font-black uppercase'>Pesquisa por tecnologia</p>
 //
-//         <TechsCheckbox selectedTechs={search} onSelectedTechsChange={handleTechsChange} />
+//         <TechsCheckbox onSelectedTechsChange={handleTechsChange} />
 //
 //       </div>
 //

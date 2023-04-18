@@ -9,7 +9,9 @@ import Tilt from 'react-parallax-tilt'
 import './LastProjects.css'
 import { useWindowSize } from 'react-use'
 import { useEffect, useState } from 'react'
-import { hoverRepoImage, resetRepoImage, repoBackgroundImageUrl } from '@/util/homeExternalJavascript'
+import {
+  hoverRepoImage, resetRepoImage, repoBackgroundImageUrl, filteredRepos,
+} from '@/util/homeExternalJavascript'
 import useFetch from '@/hooks/useFetch'
 
 const MainProjects = (props: any) => {
@@ -22,33 +24,33 @@ const MainProjects = (props: any) => {
   const [repoSearch, setRepoSearch] = useState()
   const { nameSearch, autocompleteSearch, categorySearch } = props.repoSearchProps
 
-  const filteredRepos = () => {
-    if (repoSearch) {
-      const allRepos = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
-      if (nameSearch.length > 0) {
-        if (autocompleteSearch && categorySearch) {}
-        if (autocompleteSearch) {}
-        if (categorySearch) {}
-
-        return allRepos?.map((repo) => repo.name)
-      }
-
-      //
-      //       if (autocompleteSearch) {
-      //         if (nameSearch && categorySearch) {}
-      //         if (nameSearch) {}
-      //         if (categorySearch) {}
-      //         dataLastRepos?.filter((repo) => repo.topics.includes(autocompleteSearch[0]))
-      //       }
-      //
-      //       if (categorySearch) {
-      //         if (autocompleteSearch && nameSearch) {}
-      //         if (autocompleteSearch) {}
-      //         if (nameSearch) {}
-      //         dataLastRepos?.filter((repo) => repo.topics.includes(categorySearch))
-      //       }
-    }
-  }
+  //   const filteredRepos = () => {
+  //     if (repoSearch) {
+  //       const allRepos = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
+  //       if (nameSearch.length > 0) {
+  //         if (autocompleteSearch && categorySearch) {}
+  //         if (autocompleteSearch) {}
+  //         if (categorySearch) {}
+  //
+  //         return allRepos?.map((repo) => repo.name)
+  //       }
+  //
+  //       //
+  //       //       if (autocompleteSearch) {
+  //       //         if (nameSearch && categorySearch) {}
+  //       //         if (nameSearch) {}
+  //       //         if (categorySearch) {}
+  //       //         dataLastRepos?.filter((repo) => repo.topics.includes(autocompleteSearch[0]))
+  //       //       }
+  //       //
+  //       //       if (categorySearch) {
+  //       //         if (autocompleteSearch && nameSearch) {}
+  //       //         if (autocompleteSearch) {}
+  //       //         if (nameSearch) {}
+  //       //         dataLastRepos?.filter((repo) => repo.topics.includes(categorySearch))
+  //       //       }
+  //     }
+  //   }
 
   useEffect(() => {
     setRepoSearch(props)
@@ -70,8 +72,19 @@ const MainProjects = (props: any) => {
 
     <>
       {nameSearch?.length > 0 || categorySearch !== 'all' || autocompleteSearch?.length > 0
-        ? filteredRepos()
-        : dataLastRepos?.map((projeto: any, repoIdx: number) => {
+        ? filteredRepos(dataLastRepos, repoSearch, nameSearch, autocompleteSearch, categorySearch)
+        : dataLastRepos?.sort(
+          (previusRepo, repo) => {
+            const actualDate = repo.pushed_at
+            const previusDate = previusRepo.pushed_at
+
+            const actualParsedData = Date.parse(actualDate)
+            const previusParsedData = Date.parse(previusDate)
+
+            return actualParsedData - previusParsedData
+          },
+
+        ).map((projeto: any, repoIdx: number) => {
           if (dataLastRepos[repoIdx].stargazers_count !== '0') {
             return (
               <div key={`last-projects-${ dataLastRepos[repoIdx].name }`}>
@@ -145,6 +158,12 @@ const MainProjects = (props: any) => {
                             >
                               Code
                             </Link>
+                            <button
+                              className='btn vtn-success'
+                              type='button'
+                              onClick={() => console.log(autocompleteSearch)}
+                            >aa
+                            </button>
                             <Link
                               href={`${ dataLastRepos[repoIdx].homepage }`}
                               className='w-1/2 h-full font-black text-center text-green-600 duration-500 bg-green-600 border border-green-600 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:w-full sm:py-3 md:py-3'
