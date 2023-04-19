@@ -26,7 +26,6 @@ const HomePage = () => {
 
   const handleSearch = (searchState: any) => {
     setFilterValue(searchState)
-    console.log(filterValue)
   }
 
   return (

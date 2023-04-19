@@ -16,95 +16,89 @@ const resetRepoImage = (repoClassification: string, repoIdx: number) => {
 }
 
 const repoBackgroundImageUrl = (data: any, repoIdx: number) => {
-  const httpIndexFinder = data[repoIdx].description.indexOf('http')
-  const bgUrlValue = data[repoIdx].description.slice(httpIndexFinder)
+  const httpIndexFinder = data.description.indexOf('http')
+  const bgUrlValue = data.description.slice(httpIndexFinder)
   return bgUrlValue
 }
 
-const filteredRepos = (dataLastRepos: any, repoSearch: any, nameSearch:string, autocompleteSearch:string[], categorySearch:string) => {
-  const searchParams = JSON.stringify(repoSearch?.repoSearchProps)
-  const emptySearch = '{"nameSearch":"","autocompleteSearch":[],"categorySearch":"all"}'
-  
-  
+const filteredRepos = (
+  dataLastRepos: any,
+  repoSearch: any,
+  nameSearch: string,
+  autocompleteSearch: string[],
+  categorySearch: string,
+) => {
+  type Repo = {
+    name: string
+    topics: string[]
+    tech: any
+  }
+
   // ! FAÇA O ESTADO SER PASSADO SOMETE AO CLICAR EM FILTRAR
 
-  if (searchParams !== emptySearch) {
-    if (nameSearch?.length > 0) {
-      const nameSearchFilter = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
+  //* /////////////////////// Name Search + Autocomplete Search + Category Search
 
-      return nameSearchFilter?.map((repo) => repo.name)
-    }
+  if (nameSearch?.length > 0 && autocompleteSearch.length > 0 && categorySearch !== 'all') {
+    const nameSearchFilter = dataLastRepos?.filter((repo: Repo) => repo.name.includes(nameSearch))
+    const autocompleteValues = autocompleteSearch?.map((tech) => (tech.tech).toLowerCase())
+    const nameAndAutocompleteSearch = nameSearchFilter.filter(
+      (repo: Repo) => repo.topics.some((topic) => autocompleteValues.includes(topic)),
+    )
 
-    //* ///////////////////////
-
-    if (autocompleteSearch?.length > 0) {
-      const autocompleteValues = autocompleteSearch?.map((tech) => tech.tech)
-      const refinedAutocompleteValues = autocompleteValues?.map((e) => e.toLowerCase())
-
-      const autocompleteSearchFilter = dataLastRepos?.filter((repos) => repos.topics.some((topic) => refinedAutocompleteValues.includes(topic)))
-
-      if (categorySearch !== 'all') {
-        const autocompleteAndCategorySearch = autocompleteSearchFilter.filter((repos) => repos.topics.includes(categorySearch))
-  
-        return autocompleteAndCategorySearch?.map((repo) => repo.name)
-      }
-      
-      return autocompleteSearchFilter?.map((repo) => repo.name)
-    }
-
-    //* ///////////////////////
-
-    if (categorySearch !== 'all') {
-      const categorySearchFilter = dataLastRepos?.filter((repos) => repos.topics.includes(categorySearch))
-      // if (autocompleteSearch) {}
-      // if (nameSearch) {}
-      return categorySearchFilter?.map((repo) => repo.name)
-    }
-
-    //* ///////////////////////
-
-    if (nameSearch?.length > 0 && autocompleteSearch.length > 0 && categorySearch !== 'all') {
-      const nameSearchFilter = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
-
-      const autocompleteValues = autocompleteSearch?.map((tech) => tech.tech)
-      const refinedAutocompleteValues = autocompleteValues?.map((e) => e.toLowerCase())
-
-      const nameAndAutocompleteSearch = nameSearchFilter.filter((repos) => repos.topics.some((topic) => refinedAutocompleteValues.includes(topic)))
-
-      const nameAndAutocompleteAndCategorySearch = nameAndAutocompleteSearch.filter((repos) => repos.topics.includes(categorySearch))
-
-      return nameAndAutocompleteAndCategorySearch?.map((repo) => repo.name)
-    }
-
-    //* ///////////////////////
-
-    if (nameSearch?.length > 0 && autocompleteSearch.length > 0) {
-      const nameSearchFilter = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
-
-      const autocompleteValues = autocompleteSearch?.map((tech) => tech.tech)
-      const refinedAutocompleteValues = autocompleteValues?.map((e) => e.toLowerCase())
-
-      const nameAndAutocompleteSearch = nameSearchFilter.filter((repos) => repos.topics.some((topic) => refinedAutocompleteValues.includes(topic)))
-
-      return nameAndAutocompleteSearch?.map((repo) => repo.name)
-    }
-
-    //* ///////////////////////
-
-    if (nameSearch?.length > 0 && categorySearch !== 'all') {
-      const nameSearchFilter = dataLastRepos?.filter((repos) => repos.name.includes(nameSearch))
-
-      const nameAndCategorySearch = nameSearchFilter.filter((repos) => repos.topics.includes(categorySearch))
-      return nameAndCategorySearch?.map((repo) => repo.name)
-    }
-
-    //* ///////////////////////
+    return nameAndAutocompleteSearch.filter((repo: Repo) => repo.topics.includes(categorySearch))
   }
+
+  //* /////////////////////// Name Search + Autocomplete Search
+
+  if (nameSearch?.length > 0 && autocompleteSearch.length > 0) {
+    const nameSearchFilter = dataLastRepos?.filter((repo: Repo) => repo.name.includes(nameSearch))
+    const autocompleteValues = autocompleteSearch?.map((tech: Repo) => (tech.tech).toLowerCase())
+
+    return nameSearchFilter.filter((repo: Repo) => repo.topics.some((topic) => autocompleteValues.includes(topic)))
+  }
+
+  //* /////////////////////// Name Search + Category Search
+
+  if (nameSearch?.length > 0 && categorySearch !== 'all') {
+    const nameSearchFilter = dataLastRepos?.filter((repo: Repo) => repo.name.includes(nameSearch))
+
+    return nameSearchFilter.filter((repo: Repo) => repo.topics.includes(categorySearch))
+  }
+
+  //* /////////////////////// Autocomplete Search + Category Search
+
+  if (autocompleteSearch?.length > 0 && categorySearch !== 'all') {
+    const autocompleteValues = autocompleteSearch?.map((tech) => (tech.tech).toLowerCase())
+    const autocompleteSearchFilter = dataLastRepos?.filter(
+      (repo: Repo) => repo.topics.some((topic) => autocompleteValues.includes(topic)),
+    )
+
+    return autocompleteSearchFilter.filter((repo: Repo) => repo.topics.includes(categorySearch))
+  }
+  //* /////////////////////// Name Search
+
+  if (nameSearch?.length > 0) {
+    return dataLastRepos?.filter((repo: Repo) => repo.name.includes(nameSearch))
+  }
+
+  //* /////////////////////// Autocomplete Search
+
+  if (autocompleteSearch?.length > 0) {
+    const autocompleteValues = autocompleteSearch?.map((tech) => tech.tech)
+    const refinedAutocompleteValues = autocompleteValues?.map((e) => e.toLowerCase())
+
+    return dataLastRepos?.filter((repo: Repo) => repo.topics.some((topic) => refinedAutocompleteValues.includes(topic)))
+  }
+
+  //* /////////////////////// Category Search
+
+  if (categorySearch !== 'all') {
+    return dataLastRepos?.filter((repo: Repo) => repo.topics.includes(categorySearch))
+  }
+
+  return 'searchedResults'
 }
 
 export {
-  hoverRepoImage,
-  resetRepoImage,
-  repoBackgroundImageUrl,
-  filteredRepos,
+  hoverRepoImage, resetRepoImage, repoBackgroundImageUrl, filteredRepos,
 }
