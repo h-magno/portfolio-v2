@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import { TextField } from '@mui/material'
-import { useReducer, useEffect } from 'react'
+import { Button, TextField } from '@mui/material'
+import { useReducer, useEffect, useRef } from 'react'
 import './RepoSearch.css'
+import { Anek_Telugu } from '@next/font/google'
+import useFetch from '@/hooks/useFetch'
 import TechsCheckbox from './techs-checkbox/TechsChekbox'
 
 const initialState = {
@@ -26,10 +28,13 @@ const reducer = (state: any, action: any) => {
 
 const RepoSearch = (props: any) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const reset = useRef(null)
+
+  const resetSearchByName = () => reset.current.click()
 
   useEffect(() => {
     props.onSearch(state)
-  }, [state, props])
+  }, [])
 
   const setNameSearch = (name: string) => {
     dispatch({ type: 'SET_NAME_SEARCH', payload: name })
@@ -57,6 +62,7 @@ const RepoSearch = (props: any) => {
 
         <div className='w-full'>
           <TextField
+            id='searchByName'
             className='w-full bg-white border-2'
             onChange={(event) => setNameSearch(event.target.value)}
           />
@@ -75,6 +81,7 @@ const RepoSearch = (props: any) => {
         <p className='mb-3 font-black uppercase'>Pesquisa por categoria</p>
         <label>
           <input
+            ref={reset}
             className='mr-2'
             type='radio'
             name='stack'
@@ -119,9 +126,39 @@ const RepoSearch = (props: any) => {
 
       </div>
 
-      <button type='submit' className='absolute btn-success btn right-5 bottom-5'>
-        Filtrar
-      </button>
+      {props.isFiltering ? (
+        <button
+          type='submit'
+          className='absolute px-6 py-2 font-black text-red-500 bg-red-500 border-2 border-red-500 rounded-xl right-5 bottom-5 z-50 bg-opacity-10 hover:bg-opacity-20 duration-500'
+          onClick={() => {
+            const autocompleteCleaner = document.querySelector('button[title="Clear"]')
+
+            if (autocompleteCleaner) {
+              autocompleteCleaner.click()
+            }
+
+            setAutocompleteSearch([])
+
+            const resetNameSearch = document.getElementById('searchByName')
+            resetNameSearch.value = ''
+
+            setNameSearch('')
+            resetSearchByName()
+            props.setIsFiltering(!props.isFiltering)
+          }}
+        > Limpar
+        </button>
+      ) : (
+        <button
+          type='submit'
+          className='absolute px-6 py-2 font-black text-blue-500 bg-blue-500 border-2 border-blue-500 rounded-xl right-5 bottom-5 bg-opacity-10 hover:bg-opacity-20 duration-500'
+          onClick={() => {
+            props.setIsFiltering(!props.isFiltering)
+          }}
+        > Filtrar
+        </button>
+      )}
+
     </form>
   )
 }

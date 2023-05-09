@@ -4,18 +4,13 @@ import Image from 'next/image'
 import { useWindowSize } from 'react-use'
 
 import GitHubIcon from '@mui/icons-material/GitHub'
-import YouTubeIcon from '@mui/icons-material/YouTube'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 const Navbar = (navbarRefProp: any) => {
   const { width: screenWidth } = useWindowSize()
 
   const NavbarRefIsInView = navbarRefProp.navbarRefIsInView
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => console.log(NavbarRefIsInView.navbarRefIsInView), 1000)
-  //   return (() => clearInterval(interval))
-  // }, [NavbarRefIsInView])
 
   return (
     <>
@@ -120,7 +115,7 @@ const Navbar = (navbarRefProp: any) => {
                   fontSize: '40px', color: 'grey', cursor: 'pointer', '&:hover': { color: 'lightgrey' },
                 }}
                 />
-                <YouTubeIcon sx={{
+                <WhatsAppIcon sx={{
                   fontSize: '40px', color: 'grey', cursor: 'pointer', '&:hover': { color: 'lightgrey' },
                 }}
                 />

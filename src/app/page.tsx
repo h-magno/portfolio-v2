@@ -5,13 +5,11 @@ import { useInView } from 'react-intersection-observer'
 import Tilt from 'react-parallax-tilt'
 import { useWindowSize } from 'react-use'
 import useLoading from '@/hooks/useLoading'
-import { useEffect, useState, useRef } from 'react'
 import LastProjects from './components/home/last-projects/LastProjects'
 import MainProjects from './components/home/main-projects/MainProjects'
 import HomeTitle from './components/home/home-title/HomeTitle'
 import HomeVideo from './components/home/home-video/HomeVideo'
 import Footer from './components/footer/Footer'
-import RepoSearch from './components/home/repo-seacrh/RepoSearch'
 // import HomeBG from './components/home-/home-background/HomeBG'
 
 // ! TESTANDO BETTER COMMENTS - não use
@@ -20,13 +18,8 @@ import RepoSearch from './components/home/repo-seacrh/RepoSearch'
 // TODO: Testando better comments - to do
 
 const HomePage = () => {
-  const [filterValue, setFilterValue] = useState('')
   const { ref: refTitle } = useInView()
   const { width: windowWidth } = useWindowSize()
-
-  const handleSearch = (searchState: any) => {
-    setFilterValue(searchState)
-  }
 
   return (
     <>
@@ -68,21 +61,8 @@ const HomePage = () => {
       <div className='z-10 flex items-center justify-center h-16 my-5 '>
         <span className='absolute z-10'>ÚLTIMOS PROJETOS</span>
       </div>
-      <section
-        id='lastProjectSection'
-        className='container grid grid-cols-2 gap-4 mx-auto mb-10 paddingClamp md:px-50 sm:grid-cols-3 sm:gap-2 lg:px-0 xl:px-52 2lg:px-0 '
-      >
-        <div className='col-span-2 m-auto sm:col-span-3'>{useLoading('lastProjectSection')}</div>
-        <div
-          className='w-full col-span-2 px-10 py-5 m-auto bg-gray-300 rounded-3xl sm:col-span-3'
-        >
-          <RepoSearch
-            onSearch={handleSearch}
-            filterValue={filterValue}
-            setFilterValue={setFilterValue}
-          />
-        </div>
-        <LastProjects repoSearchProps={filterValue} />
+      <section>
+        <LastProjects />
       </section>
 
       <Footer />

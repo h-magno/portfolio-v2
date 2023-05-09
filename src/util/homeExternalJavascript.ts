@@ -15,7 +15,11 @@ const resetRepoImage = (repoClassification: string, repoIdx: number) => {
   myImg.style.transform = 'translateY(-0%)'
 }
 
-const repoBackgroundImageUrl = (data: any, repoIdx: number) => {
+const repoBackgroundImageUrl = (data: any) => {
+  if (data.description === undefined) {
+    return ''
+  }
+
   const httpIndexFinder = data.description.indexOf('http')
   const bgUrlValue = data.description.slice(httpIndexFinder)
   return bgUrlValue
@@ -23,7 +27,6 @@ const repoBackgroundImageUrl = (data: any, repoIdx: number) => {
 
 const filteredRepos = (
   dataLastRepos: any,
-  repoSearch: any,
   nameSearch: string,
   autocompleteSearch: string[],
   categorySearch: string,

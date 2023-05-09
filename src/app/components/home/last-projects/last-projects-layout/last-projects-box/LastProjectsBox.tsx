@@ -3,25 +3,17 @@ import Tilt from 'react-parallax-tilt'
 import {
   hoverRepoImage, resetRepoImage, repoBackgroundImageUrl,
 } from '@/util/homeExternalJavascript'
-import { useEffect } from 'react'
 import { useWindowSize } from 'react-use'
 
 const LastProjectsBox = (props: any) => {
   const { width: windowWidth } = useWindowSize()
 
-  useEffect(() => {
-    const interval = setInterval(() => console.log(props.finalData[1]), 1000)
-
-    return () => clearInterval(interval)
-  }, [props])
-
-  const description = (projeto, repoIdx: any) => {
+  const description = (projeto: any) => {
     const repoDesc = projeto.description.slice(0, projeto.description.indexOf('http'))
     if (windowWidth >= 1285) { return repoDesc.slice(0, 130) }
     if (windowWidth >= 1024) { return repoDesc.slice(0, 70) }
     return ''
   }
-
 
   return props.finalData?.sort(
     (previusRepo, repo) => {
@@ -30,11 +22,10 @@ const LastProjectsBox = (props: any) => {
 
       return actualDate - previusDate
     },
-
   ).map((projeto: any, repoIdx: number) => {
     if (projeto.stargazers_count !== '0') {
       return (
-        <div key={`last-projects-${ projeto.name }`}>
+        <div className='LastProjectBox' key={`last-projects-${ projeto.name }`}>
           <Tilt
             glareEnable
             tiltMaxAngleX={5}
@@ -105,12 +96,7 @@ const LastProjectsBox = (props: any) => {
                       >
                         Code
                       </Link>
-                      <button
-                        className='btn vtn-success'
-                        type='button'
-                        onClick={() => console.log(autocompleteSearch)}
-                      >aa
-                      </button>
+
                       <Link
                         href={`${ projeto.homepage }`}
                         className='w-1/2 h-full font-black text-center text-green-600 duration-500 bg-green-600 border border-green-600 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:w-full sm:py-3 md:py-3'
