@@ -6,6 +6,7 @@ import PauseIcon from '@mui/icons-material/Pause'
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import VolumeUpSharpIcon from '@mui/icons-material/VolumeUpSharp'
+import { useWindowSize } from 'react-use'
 
 const usePlayerState = (videoPlayerRef: any) => {
   const [playerState, setPlayerState] = useState({
@@ -74,6 +75,8 @@ const usePlayerState = (videoPlayerRef: any) => {
 }
 
 const HomeVideo = () => {
+  const { width: screenWidth } = useWindowSize()
+
   const videoPlayerRef = useRef<any>(null)
   const {
     playerState, handleMute, toggleVideoPlay, handleTimeUpdate, handleChangerVideoPercentage, handleChangerVolumePercentage,
@@ -108,7 +111,7 @@ const HomeVideo = () => {
         <button type='button' className='w-1/5 h-full rounded-bl-3xl' onClick={toggleVideoPlay}>
           {playerState.playing ? <PauseIcon className='text-white' /> : <PlayArrowSharpIcon className='text-white' />}
         </button>
-        <div className='flex items-center w-1/5 h-full volume'>
+        <div className='flex items-center w-1/5 sm:w-2/5 h-full volume'>
           <button type='button' onClick={handleMute} className='flex items-center w-1/5 h-full mr-1'>
             {playerState.muted ? <VolumeOffIcon /> : <VolumeUpSharpIcon />}
           </button>
@@ -132,7 +135,7 @@ const HomeVideo = () => {
           className='w-3/5 bg-blue-800 range range-success range-xs'
         />
 
-        <div className='w-1/5 px-5 text-gray-900 f'>
+        <div className='w-1/5 px-5 sm:px-2 text-gray-900 f'>
           <select className='w-full text-center rounded-xl' onChange={handlePlaybackRateChange} value={playbackRate}>
             {[1, 1.5, 2].map((speed: number) => (
               <option key={`speedChange_${ speed }`} value={speed}>

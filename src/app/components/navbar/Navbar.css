@@ -1,0 +1,55 @@
+.translateDown {
+    animation-name: translateDown;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes translateDown {
+    0% {
+        opacity: 0;
+        display: block !important;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 100;
+        transform: translateY(384px);
+    }
+}
+
+.translateUp {
+    animation-name: translateUp;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes translateUp {
+    0% {
+        opacity: 100;
+        display: block !important;
+        transform: translateY(384px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+}
+.rotateIcon {
+    animation-name: rotateIcon;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes rotateIcon {
+    0% {
+        opacity: 100;
+        display: block !important;
+        transform: rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-90deg);
+    }
+}

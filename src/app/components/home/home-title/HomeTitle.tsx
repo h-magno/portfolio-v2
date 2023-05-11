@@ -3,7 +3,7 @@ import { Anek_Telugu } from '@next/font/google'
 
 const anekTelugu = Anek_Telugu({
   subsets: ['latin'],
-  weight: ['700', '800'],
+  weight: ['600', '700', '800'],
   variable: '--font-title',
 })
 
@@ -119,8 +119,8 @@ const ScrambleTextLine3 = () => (
 
 const HomeTitle = () => (
   <>
-    <div className='sm:hidden md:static'>
-      <div className='flex flex-col -mb-9'>
+    <div className=' '>
+      <div className='flex flex-col  -mb-9'>
         <div className='relative flex flex-col h-10 overflow-y-hidden'>
           <span className='h-full textoCapa shuffleText font-extralight'>
             <span className='text-green-500'>Olá, </span>
@@ -140,19 +140,19 @@ const HomeTitle = () => (
         <ScrambleTextLine3 />
       </div>
     </div>
-    <div className='sm:static md:hidden'>
+    {/* <div className='sm:static md:hidden'>
       <div className='flex flex-col -mb-9'>
         <span className='textoCapa font-extralight'>
           <span className='text-green-500'>Olá,</span>
           bem-vindo ao meu web
         </span>
-        <span className={`${ anekTelugu.variable } tituloCapa `}>PORTFÓLIO</span>
+        <span className={`${ anekTelugu.variable } text-red-600 tituloCapa `}>PORTFÓLIO</span>
       </div>
       <div className='w-full sm:mt-10 md:mt-10 lg:mt-5'>
         <span className='textoCapa2'>Criado por:</span>
-        <span className={`${ anekTelugu.variable } textoNomeCapa textoCapa2 ml-3 font-sans font-extrabold tracking-wide`}>HENRIQUE MAGNO</span>
+        <span className={`${ anekTelugu.variable }  textoNomeCapa textoCapa2 ml-3 font-sans font-extrabold tracking-wide`}>HENRIQUE MAGNO</span>
       </div>
-    </div>
+    </div> */}
   </>
 )
 

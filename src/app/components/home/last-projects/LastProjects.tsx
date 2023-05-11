@@ -2,6 +2,7 @@ import useLoading from '@/hooks/useLoading'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@mui/material'
 import useFetch from '@/hooks/useFetch'
+import { useWindowSize } from 'react-use'
 import RepoSearch from '../repo-search/RepoSearch'
 import LastProjectsLayout from './last-projects-layout/LastProjectsLayout'
 
@@ -11,6 +12,8 @@ const LastProjects = () => {
       Authorization: `Bearer ${ process.env.NEXT_PUBLIC_TOKEN_GIT }`,
     },
   })
+
+  const { width: screenWidth } = useWindowSize()
   const [filterValue, setFilterValue] = useState('')
 
   const handleSearch = (searchState: any) => {
@@ -27,7 +30,7 @@ const LastProjects = () => {
   }, [filterValue, dataLastRepos])
 
   const { data: displayRepos } = useFetch(
-    `https://api.github.com/users/henrique-magno-dev/repos?per_page=4&page=${ activePage }`,
+    `https://api.github.com/users/henrique-magno-dev/repos?per_page=${ screenWidth > 767 ? 4 : 6 }&page=${ activePage }`,
     {
       headers: {
         Authorization: `Bearer ${ process.env.NEXT_PUBLIC_TOKEN_GIT }`,
@@ -46,7 +49,7 @@ const LastProjects = () => {
         className='relative w-full col-span-2 px-10 py-5 m-auto bg-gray-300 rounded-3xl sm:col-span-3'
       >
         <div
-          className={` ${ isFiltering ? 'w-full h-full absolute left-0 top-0 z-40' : 'none' }`}
+          className={` ${ isFiltering ? 'w-full h-full absolute left-0 top-0 z-30 bg-gray-600 bg-opacity-25 rounded-3xl duration-500 ' : 'none opacity-0 duration-500' }`}
         />
         <RepoSearch
           onSearch={handleSearch}
@@ -61,13 +64,13 @@ const LastProjects = () => {
 
       <div className='flex items-center justify-center w-full col-span-2 py-5 bg-gray-300 sm:col-span-3 rounded-3xl'>
 
-        {/* <Pagination
+        <Pagination
           count={isFiltering ? 1 : numberOfPages}
           onChange={(element, activeValue) => setActivePage(activeValue)}
           id='pagination'
           variant='outlined'
           color='primary'
-        /> */}
+        />
 
       </div>
     </div>

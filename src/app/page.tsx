@@ -19,14 +19,11 @@ import Footer from './components/footer/Footer'
 
 const HomePage = () => {
   const { ref: refTitle } = useInView()
-  const { width: windowWidth } = useWindowSize()
 
   return (
     <>
       <div
-        className={`${ windowWidth <= 768 ? 'mt-[100px]' : '' } ${
-          windowWidth <= 1024 ? '' : 'h-[95svh]'
-        } paddingClamp sm:flex sm:flex-col-reverse md:flex md:flex-col-reverse md:pt-32 lg:grid lg:grid-cols-2 lg:pt-0`}
+        className='paddingClamp lg:mb-10 lg:mt-20 sm:flex sm:mt-20 sm:flex-col-reverse md:flex md:flex-col-reverse md:pt-32 lg:grid lg:grid-cols-2 lg:pt-0'
       >
         <div className='md:paddingClamp slideRightLeft sm:my-20 md:m-auto md:my-10 md:w-4/5 lg:my-0 lg:flex lg:w-full lg:items-center lg:justify-center lg:pt-16 xl:w-full 2xl:w-[800px]'>
           <Tilt
@@ -55,7 +52,7 @@ const HomePage = () => {
       </div>
       <section id='mainProjectSection' className='container grid grid-cols-1 gap-4 mx-auto mb-10 paddingClamp sm:grid-cols-1 2xl:px-52 2lg:px-0'>
         {useLoading('mainProjectSection')}
-        {/* <MainProjects /> */}
+        <MainProjects />
       </section>
 
       <div className='z-10 flex items-center justify-center h-16 my-5 '>

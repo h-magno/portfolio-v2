@@ -3,6 +3,8 @@
 /* eslint-disable react/function-component-definition */
 import './globals.css'
 import { useInView } from 'react-intersection-observer'
+import SettingsIcon from '@mui/icons-material/Settings'
+import { Switch } from '@mui/material'
 import Navbar from './components/navbar/Navbar'
 import SmoothScroll from './components/smooth-scroll/SmoothScroll'
 
@@ -21,6 +23,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div id='smooth-scroll-div' className='h-screen'>
           <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
           <SmoothScroll />
+
+          <label tabIndex={0} className='dropdown dropdown-top dropdown-end fixed bottom-10 right-10 rounded-full w-14 h-14 flex justify-center items-center bg-gray-200 text-black sm:hidden hover:bg-gray-300 duration-500 cursor-pointer z-50'>
+            <SettingsIcon sx={{ color: 'black', fontSize: '25px', opacity: '70%' }} />
+
+            <ul className='dropdown-content menu p-2 shadow bg-gray-200 rounded-box w-52'>
+             
+              <li className='hover:bg-gray-300 duration-200 flex flex-row justify-between items-center'>
+                <span>Idioma</span>
+                <Switch defaultChecked />
+
+              </li>
+            </ul>
+          </label>
           {children}
         </div>
       </body>

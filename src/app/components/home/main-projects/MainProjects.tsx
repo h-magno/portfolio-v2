@@ -82,7 +82,7 @@ const MainProject = () => {
                       </div>
                       <div className='flex justify-center h-2/5 sm:my-10 sm:items-center md:my-10 md:items-center lg:my-0 lg:items-start'>
                         {/* // ! quebrando quando não há descrição no repositório - null */}
-                        {projeto.description.slice(0, projeto.description.indexOf('http'))}
+                        {projeto.description.slice(0, projeto.description.indexOf('http')).substring(0, 184)}
                       </div>
                       <div className='flex items-center justify-center h-1/5 sm:my-5 md:my-5 lg:my-0 lg:pb-10'>
                         <Link

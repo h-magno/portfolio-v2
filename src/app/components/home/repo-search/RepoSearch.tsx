@@ -10,7 +10,7 @@ import TechsCheckbox from './techs-checkbox/TechsChekbox'
 const initialState = {
   nameSearch: '',
   autocompleteSearch: [],
-  categorySearch: 'all',
+  categorySearch: 'all'
 }
 
 const reducer = (state: any, action: any) => {
@@ -54,82 +54,49 @@ const RepoSearch = (props: any) => {
         e.preventDefault()
         props.onSearch(state)
       }}
-      className='relative flex justify-between text-black'
+      className='relative flex lg:flex-row md:flex-col sm:flex-col justify-between text-black'
     >
+      <div className='w-full lg:p-10 md:p-0 sm:p-0 md:mb-5 sm:mb-5 text-center '>
+        <p className='mb-10 md:mb-2 sm:mb-2 font-black uppercase'> Pesquisa por nome </p>
 
-      <div className='w-full p-5 '>
-        <p className='mb-10 font-black uppercase '> Pesquisa por nome </p>
-
-        <div className='w-full'>
-          <TextField
-            id='searchByName'
-            className='w-full bg-white border-2'
-            onChange={(event) => setNameSearch(event.target.value)}
-          />
+        <div className='w-full '>
+          <TextField id='searchByName' className='w-full border-2 bg-white' onChange={(event) => setNameSearch(event.target.value)} />
         </div>
       </div>
 
-      <div className='flex-col w-full h-full gap-2 p-5 file:flex'>
-        <p className='mb-10 font-black uppercase'>Pesquisa por tecnologia</p>
+      <div className='h-full w-full flex-col gap-2 lg:p-10 md:p-0 sm:p-0 text-center'>
+        <p className='mb-10 md:mb-2 sm:mb-2 font-black uppercase'>Pesquisa por tecnologia</p>
 
         <TechsCheckbox onSelectedTechsChange={setAutocompleteSearch} />
-
       </div>
 
-      <div className='relative flex flex-col w-full gap-1 p-5'>
-
+      <div className='relative flex w-full flex-col gap-1 p-5'>
         <p className='mb-3 font-black uppercase'>Pesquisa por categoria</p>
         <label>
-          <input
-            ref={reset}
-            className='mr-2'
-            type='radio'
-            name='stack'
-            value='all'
-            onChange={() => setCategorySearch('all')}
-          />
+          <input ref={reset} className='mr-2' type='radio' name='stack' value='all' onChange={() => setCategorySearch('all')} />
           Todos
         </label>
 
         <label>
-          <input
-            className='mr-2'
-            type='radio'
-            name='stack'
-            value='full-stack'
-            onChange={() => setCategorySearch('full-stack')}
-          />
+          <input className='mr-2' type='radio' name='stack' value='full-stack' onChange={() => setCategorySearch('full-stack')} />
           Full-Stack
         </label>
 
         <label>
-          <input
-            className='mr-2'
-            type='radio'
-            name='stack'
-            value='front-end'
-            onChange={() => setCategorySearch('front-end')}
-          />
+          <input className='mr-2' type='radio' name='stack' value='front-end' onChange={() => setCategorySearch('front-end')} />
           Front-End
         </label>
 
         <label>
-          <input
-            className='mr-2'
-            type='radio'
-            name='stack'
-            value='back-end'
-            onChange={() => setCategorySearch('back-end')}
-          />
+          <input className='mr-2' type='radio' name='stack' value='back-end' onChange={() => setCategorySearch('back-end')} />
           Back-End
         </label>
-
       </div>
 
       {props.isFiltering ? (
         <button
           type='submit'
-          className='absolute px-6 py-2 font-black text-red-500 bg-red-500 border-2 border-red-500 rounded-xl right-5 bottom-5 z-50 bg-opacity-10 hover:bg-opacity-20 duration-500'
+          className='absolute right-5 bottom-5 z-40 rounded-xl border-2 border-red-500 bg-red-500 bg-opacity-10 px-6 py-2 font-black text-red-500 duration-500 hover:bg-opacity-20'
           onClick={() => {
             const autocompleteCleaner = document.querySelector('button[title="Clear"]')
 
@@ -146,19 +113,20 @@ const RepoSearch = (props: any) => {
             resetSearchByName()
             props.setIsFiltering(!props.isFiltering)
           }}
-        > Limpar
+        >
+          Limpar
         </button>
       ) : (
         <button
           type='submit'
-          className='absolute px-6 py-2 font-black text-blue-500 bg-blue-500 border-2 border-blue-500 rounded-xl right-5 bottom-5 bg-opacity-10 hover:bg-opacity-20 duration-500'
+          className='absolute right-5 bottom-5 rounded-xl border-2 border-blue-500 bg-blue-500 bg-opacity-10 px-6 py-2 font-black text-blue-500 duration-500 hover:bg-opacity-20'
           onClick={() => {
             props.setIsFiltering(!props.isFiltering)
           }}
-        > Filtrar
+        >
+          Filtrar
         </button>
       )}
-
     </form>
   )
 }
