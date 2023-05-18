@@ -30,7 +30,7 @@ const LastProjects = () => {
   }, [filterValue, dataLastRepos])
 
   const { data: displayRepos } = useFetch(
-    `https://api.github.com/users/henrique-magno-dev/repos?per_page=${ screenWidth > 767 ? 4 : 6 }&page=${ activePage }`,
+    `https://api.github.com/users/henrique-magno-dev/repos?per_page=4&page=${ activePage }`,
     {
       headers: {
         Authorization: `Bearer ${ process.env.NEXT_PUBLIC_TOKEN_GIT }`,

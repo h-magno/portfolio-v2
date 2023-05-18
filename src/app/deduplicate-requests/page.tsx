@@ -3,23 +3,23 @@
 import React from 'react'
 
 const deduplicateRequest = async () => {
-  const response = await fetch( 'https://api.github.com/users/henrique-magno-dev/repos', {
+  const response = await fetch('https://api.github.com/users/henrique-magno-dev/repos', {
     headers: {
       Authorization: `Bearer ${ process.env.NEXT_PUBLIC_TOKEN_GIT }`,
     },
-  } )
+  })
   const repo = await response.json()
 
   return (
     <div>
       <h1>
         Quantidade de repositórios:
-        {JSON.stringify( repo.length, null, 2 )}
+        {JSON.stringify(repo.length, null, 2)}
       </h1>
 
       <h2>Meus rositorios:</h2>
       <pre>
-        {JSON.stringify( repo, null, 2 )}
+        {JSON.stringify(repo, null, 2)}
       </pre>
     </div>
   )

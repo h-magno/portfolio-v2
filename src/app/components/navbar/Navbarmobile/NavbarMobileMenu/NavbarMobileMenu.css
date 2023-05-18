@@ -1,0 +1,11 @@
+.br-flag {
+    background-image: url('https://pbs.twimg.com/media/FwSOpopWIAItNSH?format=jpg&name=medium');
+    background-size: cover;
+    background-position: left center;
+}
+
+.eng-flag {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg');
+    background-size: cover;
+    background-position: left center;
+}

@@ -38,14 +38,14 @@ const LastProjectsBox = (props: any) => {
           >
             <div
               key={`last-projects-${ projeto }`}
-              className='projectBoxClass bg-[#0819416c] backdrop-blur-sm relative rounded-3xl border border-gray-800 p-4 lg:h-80  lg:p-4 '
+              className='projectBoxClass bg-[#615ac015] dark:bg-[#0819412c] backdrop-blur-sm relative rounded-3xl p-4 lg:h-80  lg:p-4 '
             >
               <div className='flex items-center justify-center text-2xl font-black capitalize sm:mt-3 sm:text-center sm:text-xl md:mb-2 lg:h-1/6'>
                 {projeto.name.replace('-hm', '').replace('-', ' ')}
               </div>
               <div className='flex sm:flex-col md:flex-col lg:h-4/5 lg:flex-row'>
                 <div className='box-border sm:h-1/2 sm:w-full sm:px-10 sm:py-1 md:h-1/2 md:w-full md:py-2 lg:flex lg:h-full lg:w-1/2 lg:items-center lg:justify-center'>
-                  <div className='rounded-3xl border border-gray-800 bg-black sm:m-auto sm:hidden sm:aspect-video sm:w-full md:m-auto md:aspect-video md:h-full lg:aspect-square lg:h-[90%]'>
+                  <div className='rounded-3xl  bg-black sm:m-auto sm:hidden sm:aspect-video sm:w-full md:m-auto md:aspect-video md:h-full lg:aspect-square lg:h-[90%]'>
                     <Link
                       href={`${ projeto.homepage }`}
                       id={`link-last-repo-${ repoIdx }`}
@@ -71,9 +71,9 @@ const LastProjectsBox = (props: any) => {
                               <div className='md:mt-1 lg:h-2/5 '>
                                 <div
                                   tabIndex={0}
-                                  className=' collapse rounded-3xl border-2  border-green-600 bg-[#040C15] text-white md:collapse-arrow lg:collapse-arrow  sm:text-center '
+                                  className='collapse-arrow collapse rounded-3xl dark:border border-gray-900 bg-gray-300 dark:border-blue-600 dark:bg-blue-600 dark:bg-opacity-5  text-gray-900 dark:text-blue-600'
                                 >
-                                  <div className='font-thin text-medium text-white-400 collapse-title sm:px-0'>
+                                  <div className='font-bold text-medium text-white-400 collapse-title sm:px-0'>
                                     Recursos
                                   </div>
                                   <div className='collapse-content'>
@@ -88,18 +88,18 @@ const LastProjectsBox = (props: any) => {
                             )
                             : ''
                         }
-                    <div className='mt-2 text-xs font-thin lg:h-2/5'>{description(projeto)}</div>
+                    <div className='mt-2 text-xs font-bold dark:font-thin lg:h-2/5'>{description(projeto)}</div>
                     <div className='flex sm:mt-5 md:mt-5 md:h-1/5 lg:h-auto'>
                       <Link
                         href={`${ projeto.html_url }`}
-                        className='w-1/2 h-full mr-2 font-black text-center text-blue-600 duration-500 bg-blue-600 border border-blue-600 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:w-full sm:py-3 md:py-3'
+                        className='w-1/2 h-full mr-2 font-black text-center text-blue-600 duration-500 bg-blue-600 border border-blue-600 rounded-2xl bg-opacity-20 hover:bg-opacity-30 dark:bg-opacity-5 dark:hover:bg-opacity-10 sm:w-full sm:py-3 md:py-3'
                       >
                         Code
                       </Link>
 
                       <Link
                         href={`${ projeto.homepage }`}
-                        className='w-1/2 h-full font-black text-center text-green-600 duration-500 bg-green-600 border border-green-600 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:w-full sm:py-3 md:py-3'
+                        className='w-1/2 h-full font-black text-center text-purple-600 dark:text-green-600 duration-500 bg-purple-600 dark:bg-green-600 border border-purple-600 dark:border-green-600 dark:bg-opacity-5 dark:hover:bg-opacity-10 rounded-2xl bg-opacity-20 hover:bg-opacity-30 sm:w-full sm:py-3 md:py-3'
                       >
                         Demo
                       </Link>

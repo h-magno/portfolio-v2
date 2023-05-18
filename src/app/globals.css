@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 
-
-html {
-    background: #000010 !important;
-    overflow-x: hidden;
-}
-
 * {
     margin: 0;
     padding: 0;

@@ -3,10 +3,14 @@
 /* eslint-disable react/function-component-definition */
 import './globals.css'
 import { useInView } from 'react-intersection-observer'
-import SettingsIcon from '@mui/icons-material/Settings'
-import { Switch } from '@mui/material'
+// import SettingsIcon from '@mui/icons-material/Settings'
+// import { Switch } from '@mui/material'
+import { useState } from 'react'
+import { ThemeContext } from '@/hooks/useTheme'
+
 import Navbar from './components/navbar/Navbar'
 import SmoothScroll from './components/smooth-scroll/SmoothScroll'
+import Settings from './components/configs/Settings'
 
 export const metadata = {
   title: 'Portfólio Henrique Magno',
@@ -16,29 +20,22 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { ref: NavbarRef, inView: NavbarRefIsInView } = useInView()
 
+  const [darkMode, setDarkMode] = useState(false)
+
   return (
-    <html lang='pt-BR'>
-      <body className='z-10 h-screen p-0 m-0 font-mono text-white outline-transparent'>
-        <Navbar navbarRefIsInView={NavbarRefIsInView} />
-        <div id='smooth-scroll-div' className='h-screen'>
-          <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
-          <SmoothScroll />
-
-          <label tabIndex={0} className='dropdown dropdown-top dropdown-end fixed bottom-10 right-10 rounded-full w-14 h-14 flex justify-center items-center bg-gray-200 text-black sm:hidden hover:bg-gray-300 duration-500 cursor-pointer z-50'>
-            <SettingsIcon sx={{ color: 'black', fontSize: '25px', opacity: '70%' }} />
-
-            <ul className='dropdown-content menu p-2 shadow bg-gray-200 rounded-box w-52'>
-             
-              <li className='hover:bg-gray-300 duration-200 flex flex-row justify-between items-center'>
-                <span>Idioma</span>
-                <Switch defaultChecked />
-
-              </li>
-            </ul>
-          </label>
-          {children}
-        </div>
-      </body>
-    </html>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+      <html lang='pt-BR' className={`${ darkMode ? 'dark bg-[#000010]' : 'bg-gray-300' } overflow-x-hidden`}>
+        <body className='z-10  m-0 h-screen p-0 font-mono outline-transparent text-gray-900 dark:text-white'>
+          {/* <div className='fixed left-0 h-screen w-96 bg-red-500' > a a a</div> */}
+          <Navbar navbarRefIsInView={NavbarRefIsInView} />
+          <div id='smooth-scroll-div' className='h-screen'>
+            <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
+            <SmoothScroll />
+            <Settings />
+            {children}
+          </div>
+        </body>
+      </html>
+    </ThemeContext.Provider>
   )
 }

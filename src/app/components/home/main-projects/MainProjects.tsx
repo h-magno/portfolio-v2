@@ -43,9 +43,9 @@ const MainProject = () => {
                 glareReverse
                 glareBorderRadius='1.5rem'
               >
-                <div className='m-auto flex w-full rounded-3xl border border-gray-800 bg-[#0819416c] backdrop-blur-sm sm:h-auto sm:flex-col md:flex-col lg:h-[500px] lg:flex-row'>
+                <div className='m-auto flex w-full rounded-3xl  dark:border-gray-800  bg-[#615ac015] dark:bg-[#0819412c] backdrop-blur-sm sm:h-auto sm:flex-col md:flex-col lg:h-[500px] lg:flex-row'>
                   <div className='box-border sm:h-1/2 sm:w-full sm:px-10 sm:py-2 md:h-1/2 md:w-full md:py-2 md:px-10 lg:flex lg:h-full lg:w-1/2 lg:items-center lg:justify-center'>
-                    <div className='rounded-3xl border border-gray-800 bg-black sm:m-auto sm:aspect-video sm:h-full sm:w-full md:m-auto md:aspect-video  md:h-full md:rounded-3xl lg:aspect-square lg:h-[90%]'>
+                    <div className='rounded-3xl  dark:border-gray-800 bg-black sm:m-auto sm:aspect-video sm:h-full sm:w-full md:m-auto md:aspect-video  md:h-full md:rounded-3xl lg:aspect-square lg:h-[90%]'>
                       <Link
                         href={`${ projeto.homepage }`}
                         id={`link-main-repo-${ repoIdx }`}
@@ -69,8 +69,8 @@ const MainProject = () => {
                         {projeto.name.replace('-hm', '').replace('-', ' ')}
                       </h2>
                       <div className='h-1/5'>
-                        <div tabIndex={0} className=' collapse-arrow collapse rounded-3xl border-2 border-green-600 bg-[#040C15]  text-white '>
-                          <div className='font-thin text-medium text-white-400 collapse-title'>Recursos</div>
+                        <div tabIndex={0} className='collapse-arrow collapse rounded-3xl dark:border border-gray-900 bg-gray-300 dark:border-blue-600 dark:bg-blue-600 dark:bg-opacity-5  text-gray-900 dark:text-blue-600'>
+                          <div className='font-bold  text-medium collapse-title'>Recursos</div>
                           <div className='collapse-content'>
                             {projeto.topics.map((topics: string) => (
                               <div key={`badge-${ topics }`} className='ml-1 text-white bg-gray-600 border-gray-800 badge'>
@@ -80,7 +80,7 @@ const MainProject = () => {
                           </div>
                         </div>
                       </div>
-                      <div className='flex justify-center h-2/5 sm:my-10 sm:items-center md:my-10 md:items-center lg:my-0 lg:items-start'>
+                      <div className='flex font-black dark:font-normal justify-center h-2/5 sm:my-10 sm:items-center md:my-10 md:items-center lg:my-0 lg:items-start'>
                         {/* // ! quebrando quando não há descrição no repositório - null */}
                         {projeto.description.slice(0, projeto.description.indexOf('http')).substring(0, 184)}
                       </div>
@@ -93,7 +93,7 @@ const MainProject = () => {
                         </Link>
                         <Link
                           href={`${ projeto.homepage }`}
-                          className='w-1/2 font-black text-center text-green-600 duration-500 bg-green-600 border border-green-600 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:py-3 md:py-3'
+                          className='w-1/2 font-black text-center  text-purple-600 dark:text-green-600 duration-500  bg-purple-600 dark:bg-green-600 dark:bg-opacity-5 border  border-purple-600 dark:border-green-600 dark:hover:bg-opacity-10 rounded-2xl bg-opacity-5 hover:bg-opacity-10 sm:py-3 md:py-3'
                         >
                           Demo
                         </Link>

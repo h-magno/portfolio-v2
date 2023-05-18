@@ -16,6 +16,24 @@
         transform: translateY(384px);
     }
 }
+.translateDownMenu {
+    animation-name: translateDownMenu;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes translateDownMenu {
+    0% {
+        opacity: 0;
+        display: block !important;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 100;
+        transform: translateY(384px);
+    }
+}
 
 .translateUp {
     animation-name: translateUp;
@@ -32,7 +50,7 @@
     }
     100% {
         opacity: 0;
-        transform: translateY(0px);
+        transform: translateY(-384px);
     }
 }
 .rotateIcon {
@@ -44,12 +62,27 @@
 
 @keyframes rotateIcon {
     0% {
-        opacity: 100;
+        opacity: 0;
         display: block !important;
         transform: rotate(0deg);
     }
     100% {
+        opacity: 100;
+        transform: rotate(-360deg);
+    }
+}
+.fadeOut {
+    animation-name: fadeOut;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 100;
+    }
+    100% {
         opacity: 0;
-        transform: rotate(-90deg);
     }
 }

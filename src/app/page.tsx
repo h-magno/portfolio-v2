@@ -43,6 +43,7 @@ const HomePage = () => {
         <div className='flex items-center justify-center w-full align-middle md:pl-0 lg:pl-10'>
           <header ref={refTitle} className='relative z-10 flex flex-col justify-center text-center slideLeftRight'>
             <HomeTitle />
+
           </header>
         </div>
       </div>
