@@ -107,7 +107,7 @@ const HomeVideo = () => {
         <track kind='captions' />
       </video>
 
-      <div className='controls flex h-14 items-center rounded-b-3xl bg-[#eab20834] dark:bg-[#0819416c] backdrop-blur-sm'>
+      <div className='controls flex h-14 items-center rounded-b-3xl bg-[#615ac015]  dark:bg-[#0819416c] backdrop-blur-sm'>
         <button type='button' className='w-1/5 h-full rounded-bl-3xl' onClick={toggleVideoPlay}>
           {playerState.playing ? <PauseIcon className='text-black dark:text-white' /> : <PlayArrowSharpIcon className='text-black dark:text-white' />}
         </button>
@@ -122,7 +122,7 @@ const HomeVideo = () => {
             min='0'
             max='100'
             value={playerState.volume}
-            className='w-3/5 bg-gray-300 dark:bg-blue-800 range range-warning dark:range-success range-xs'
+            className='w-3/5 bg-gray-300 dark:bg-blue-800 range range-info dark:range-success range-xs'
           />
         </div>
 
@@ -132,7 +132,7 @@ const HomeVideo = () => {
           min='0'
           max='100'
           value={playerState.percentage}
-          className='w-3/5 bg-gray-300 dark:bg-blue-800 range range-warning dark:range-success range-xs'
+          className='w-3/5 bg-gray-300 dark:bg-blue-800 range range-info dark:range-success range-xs'
         />
 
         <div className='w-1/5 px-5 sm:px-2 text-gray-900 f'>

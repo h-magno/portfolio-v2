@@ -54,7 +54,7 @@ const RepoSearch = (props: any) => {
         e.preventDefault()
         props.onSearch(state)
       }}
-      className='relative flex lg:flex-row md:flex-col sm:flex-col justify-between text-black'
+      className='relative flex lg:flex-row md:flex-col sm:flex-col justify-between  dark:text-black'
     >
       <div className='w-full lg:p-10 md:p-0 sm:p-0 md:mb-5 sm:mb-5 text-center '>
         <p className='mb-10 md:mb-2 sm:mb-2 font-black uppercase'> Pesquisa por nome </p>

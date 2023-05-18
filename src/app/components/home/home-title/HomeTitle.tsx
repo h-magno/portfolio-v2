@@ -10,27 +10,27 @@ const anekTelugu = Anek_Telugu({
 const ScrambleTextLine1 = () => (
   <>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>lO,</span>
+      <span className='text-blue-600 dark:text-green-500'>lO,</span>
       bEm-v!ndX Oa meu 3eb
     </span>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>!lá,</span>
+      <span className='text-blue-600 dark:text-green-500'>!lá,</span>
       Xe$-v!nd% Oa mOu 3eb
     </span>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>oXá,</span>
+      <span className='text-blue-600 dark:text-green-500'>oXá,</span>
       B3$-v!nd0 a* Meeu Web
     </span>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>#l¬,</span>
+      <span className='text-blue-600 dark:text-green-500'>#l¬,</span>
       b¬-v&ndo ao *u w%b
     </span>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>Ç7á,</span>
+      <span className='text-blue-600 dark:text-green-500'>Ç7á,</span>
       b%m-vYdo ¨#3 ¨e% WEb
     </span>
     <span className='h-full textoCapa shuffleText font-extralight'>
-      <span className='text-green-500'>&@á,</span>
+      <span className='text-blue-600 dark:text-green-500'>&@á,</span>
       B3m-v!n*0 To mxu web
     </span>
   </>
@@ -123,7 +123,7 @@ const HomeTitle = () => (
       <div className='flex flex-col  -mb-9'>
         <div className='relative flex flex-col h-10 overflow-y-hidden'>
           <span className='h-full textoCapa shuffleText font-extralight'>
-            <span className='text-green-500'>Olá, </span>
+            <span className='text-blue-600 dark:text-green-500'>Olá, </span>
             bem-vindo ao meu web
           </span>
           <ScrambleTextLine1 />

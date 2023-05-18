@@ -55,7 +55,7 @@ const NavbarMobile = (props: any) => {
         : ''}
 
       <div id='top-bar-mobile-menu' className='z-40'>
-        <div className='w-full h-16 fixed top-0 left-0 sm:flex backdrop-blur-sm justify-end items-center  shadow-md bg-gray-300 dark:bg-[#0819418e] hidden z-50'>
+        <div className='w-full h-16 fixed top-0 left-0 sm:flex backdrop-blur-lg dark:backdrop-blur-sm justify-end items-center  shadow-md bg-gray-300 bg-opacity-50  dark:bg-[#0819418e] hidden z-50'>
           <button
             type='button'
             ref={closeMenu}
@@ -69,7 +69,7 @@ const NavbarMobile = (props: any) => {
               const menuOpeningFromTop = document.createElement('div')
 
               menuOpeningFromTop.id = 'menu-opened-from-top'
-              menuOpeningFromTop.className = 'translateDown fixed  h-96 -top-96 left-0 w-full z-40 pt-16 box-border rounded-b-xl border-b border-black dark:border-green-400 dark:bg-[#081941] bg-gray-300'
+              menuOpeningFromTop.className = 'translateDown fixed  h-96 -top-96 left-0 w-full z-40 pt-16 box-border rounded-b-xl border-b border-blue-600 dark:border-green-400 dark:bg-[#081941] bg-gray-300'
 
               barraMenu?.appendChild(menuOpeningFromTop)
               setIsVisible(!isVisible)
@@ -77,8 +77,8 @@ const NavbarMobile = (props: any) => {
           >
 
             {isVisible
-              ? <CloseIcon className='text-yellow-500 dark:text-green-400 rotateIcon' />
-              : <MenuIcon className='text-yellow-500 dark:text-green-400 z-10 rotateIcon' sx={{ fontSize: '30px', cursor: 'pointer' }} /> }
+              ? <CloseIcon className='text-blue-600 dark:text-green-400 rotateIcon' />
+              : <MenuIcon className='text-blue-600 dark:text-green-400 z-10 rotateIcon' sx={{ fontSize: '30px', cursor: 'pointer' }} /> }
           </button>
 
         </div>

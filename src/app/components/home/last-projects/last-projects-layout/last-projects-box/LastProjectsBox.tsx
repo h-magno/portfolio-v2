@@ -71,9 +71,9 @@ const LastProjectsBox = (props: any) => {
                               <div className='md:mt-1 lg:h-2/5 '>
                                 <div
                                   tabIndex={0}
-                                  className='collapse-arrow collapse rounded-3xl dark:border border-gray-900 bg-gray-300 dark:border-blue-600 dark:bg-blue-600 dark:bg-opacity-5  text-gray-900 dark:text-blue-600'
+                                  className='collapse-arrow collapse rounded-3xl sm:pl-5 dark:border border-gray-900 bg-gray-300 dark:border-green-600 dark:bg-[#040C15] dark:text-white   text-gray-900 '
                                 >
-                                  <div className='font-bold text-medium text-white-400 collapse-title sm:px-0'>
+                                  <div className='font-bold text-medium collapse-title sm:px-0'>
                                     Recursos
                                   </div>
                                   <div className='collapse-content'>
@@ -99,7 +99,7 @@ const LastProjectsBox = (props: any) => {
 
                       <Link
                         href={`${ projeto.homepage }`}
-                        className='w-1/2 h-full font-black text-center text-purple-600 dark:text-green-600 duration-500 bg-purple-600 dark:bg-green-600 border border-purple-600 dark:border-green-600 dark:bg-opacity-5 dark:hover:bg-opacity-10 rounded-2xl bg-opacity-20 hover:bg-opacity-30 sm:w-full sm:py-3 md:py-3'
+                        className='w-1/2 h-full font-black text-center text-green-600 bg-green-600 border duration-500  border-green-600 dark:bg-opacity-5 dark:hover:bg-opacity-10 rounded-2xl bg-opacity-20 hover:bg-opacity-30 sm:w-full sm:py-3 md:py-3'
                       >
                         Demo
                       </Link>

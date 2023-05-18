@@ -10,7 +10,7 @@ import { ThemeContext } from '@/hooks/useTheme'
 
 import Navbar from './components/navbar/Navbar'
 import SmoothScroll from './components/smooth-scroll/SmoothScroll'
-import Settings from './components/configs/Settings'
+import Settings from './components/settings/Settings'
 
 export const metadata = {
   title: 'Portfólio Henrique Magno',
@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { ref: NavbarRef, inView: NavbarRefIsInView } = useInView()
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className='z-10  m-0 h-screen p-0 font-mono outline-transparent text-gray-900 dark:text-white'>
           {/* <div className='fixed left-0 h-screen w-96 bg-red-500' > a a a</div> */}
           <Navbar navbarRefIsInView={NavbarRefIsInView} />
-          <div id='smooth-scroll-div' className='h-screen'>
+          <div id='smooth-scroll-div' className='h-screen '>
             <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
             <SmoothScroll />
             <Settings />

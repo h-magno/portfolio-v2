@@ -6,7 +6,8 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          success: '#16a34a'
+          success: '#16a34a',
+          info: '#2563eb'
         }
       }
     ]

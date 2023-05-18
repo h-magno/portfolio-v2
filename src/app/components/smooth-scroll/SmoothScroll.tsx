@@ -11,7 +11,7 @@ const options = {
 const SmoothScroll = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Scrollbar.init(window.document.querySelector('#smooth-scroll-div'), options)
+      Scrollbar.init(window.document.querySelector('#smooth-scroll-div'), options)
     }
   }, [])
   return null
