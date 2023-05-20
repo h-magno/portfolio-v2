@@ -3,14 +3,13 @@
 /* eslint-disable react/function-component-definition */
 import './globals.css'
 import { useInView } from 'react-intersection-observer'
-// import SettingsIcon from '@mui/icons-material/Settings'
-// import { Switch } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ThemeContext } from '@/hooks/useTheme'
 
 import Navbar from './components/navbar/Navbar'
 import SmoothScroll from './components/smooth-scroll/SmoothScroll'
 import Settings from './components/settings/Settings'
+import ThreejsBackround from './components/home/threejs-background/ThreejsBackround'
 
 export const metadata = {
   title: 'Portfólio Henrique Magno',
@@ -20,14 +19,25 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { ref: NavbarRef, inView: NavbarRefIsInView } = useInView()
 
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(() => {
+    const storedDarkMode = localStorage.getItem('darkMode')
+    return storedDarkMode ? JSON.parse(storedDarkMode) : true
+  })
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode))
+  }, [darkMode])
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-      <html lang='pt-BR' className={`${ darkMode ? 'dark bg-[#000010]' : 'bg-gray-300' } overflow-x-hidden`}>
-        <body className='z-10  m-0 h-screen p-0 font-mono outline-transparent text-gray-900 dark:text-white'>
-          {/* <div className='fixed left-0 h-screen w-96 bg-red-500' > a a a</div> */}
+      <html lang='pt-BR' className={`${ darkMode ? 'dark bg-[#000010]' : 'bg-gray-300' } overflow-x-hidden relative h-full`}>
+
+        <body className='z-10 m-0 p-0 font-mono outline-transparent text-gray-900 dark:text-white'>
+
+          {/* <div className='fixed left-0 top-0 h-screen w-96 bg-red-500' > a a a</div> */}
+
           <Navbar navbarRefIsInView={NavbarRefIsInView} />
+
           <div id='smooth-scroll-div' className='h-screen '>
             <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
             <SmoothScroll />

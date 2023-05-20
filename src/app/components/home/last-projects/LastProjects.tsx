@@ -2,7 +2,6 @@ import useLoading from '@/hooks/useLoading'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@mui/material'
 import useFetch from '@/hooks/useFetch'
-import { useWindowSize } from 'react-use'
 import RepoSearch from '../repo-search/RepoSearch'
 import LastProjectsLayout from './last-projects-layout/LastProjectsLayout'
 
@@ -13,7 +12,6 @@ const LastProjects = () => {
     },
   })
 
-  const { width: screenWidth } = useWindowSize()
   const [filterValue, setFilterValue] = useState('')
 
   const handleSearch = (searchState: any) => {
@@ -25,8 +23,10 @@ const LastProjects = () => {
   const [isFiltering, setIsFiltering] = useState(false)
 
   useEffect(() => {
-    const pagination = Math.ceil(dataLastRepos?.length / 4)
-    setNumberOfPages(pagination)
+    if (dataLastRepos) {
+      const pagination = Math.ceil(dataLastRepos?.length / 4)
+      setNumberOfPages(pagination)
+    }
   }, [filterValue, dataLastRepos])
 
   const { data: displayRepos } = useFetch(

@@ -30,6 +30,7 @@
     "react-parallax-tilt": "^1.7.117",
     "react-use": "^17.4.0",
     "smooth-scrollbar": "^8.8.3",
+    "three": "^0.152.2",
     "typescript": "5.0.2"
   },
   "devDependencies": {

@@ -3,14 +3,15 @@
 import './index.css'
 import { useInView } from 'react-intersection-observer'
 import Tilt from 'react-parallax-tilt'
-import { useWindowSize } from 'react-use'
 import useLoading from '@/hooks/useLoading'
+import { useWindowSize } from 'react-use'
+import { useEffect, useState } from 'react'
 import LastProjects from './components/home/last-projects/LastProjects'
 import MainProjects from './components/home/main-projects/MainProjects'
 import HomeTitle from './components/home/home-title/HomeTitle'
 import HomeVideo from './components/home/home-video/HomeVideo'
 import Footer from './components/footer/Footer'
-// import HomeBG from './components/home-/home-background/HomeBG'
+import ThreejsBackround from './components/home/threejs-background/ThreejsBackround'
 
 // ! TESTANDO BETTER COMMENTS - não use
 // * TESTANDO BETTER COMMENTS - importante
@@ -19,6 +20,7 @@ import Footer from './components/footer/Footer'
 
 const HomePage = () => {
   const { ref: refTitle } = useInView()
+  const { width: clientWidth, height: clientHeight } = useWindowSize()
 
   return (
     <>
@@ -48,7 +50,7 @@ const HomePage = () => {
       </div>
 
       <div className='z-10 flex items-center justify-center h-16 mb-5 '>
-        <span className='absolute z-10'>PROJETOS PRINCIPAIS</span>
+        <span className='absolute z-10 font-bold dark:font-normal'>PROJETOS PRINCIPAIS</span>
       </div>
       <section id='mainProjectSection' className='container grid grid-cols-1 gap-4 mx-auto mb-10 paddingClamp sm:grid-cols-1 2xl:px-52 2lg:px-0'>
         {useLoading('mainProjectSection')}
@@ -56,12 +58,16 @@ const HomePage = () => {
       </section>
 
       <div className='z-10 flex items-center justify-center h-16 my-5 '>
-        <span className='absolute z-10'>ÚLTIMOS PROJETOS</span>
+        <span className='absolute z-10 font-bold dark:font-normal '>ÚLTIMOS PROJETOS</span>
       </div>
       <section>
         <LastProjects />
       </section>
       <Footer />
+      <div className='fixed top-0 w-full -z-40 h-screen ' />
+      <div className='fixed top-0 w-full -z-50 h-screen '>
+        <ThreejsBackround />
+      </div>
     </>
   )
 }
