@@ -1,6 +1,6 @@
 
 :root {
-    --tituloCapa: clamp(4.06rem, calc(3.3rem + 3.8vw), 6.25rem);
+    --tituloCapa: clamp(4.06rem, calc(3.3rem + 3.2vw), 6.25rem);
     --textoCapa: clamp(1.25rem, calc(1.03rem + 1.09vw), 1.88rem);
     --textoCapa2: clamp(1.25rem, calc(1.03rem + 1.09vw), 1.6rem);
 }

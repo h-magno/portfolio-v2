@@ -10,11 +10,14 @@ const options = {
 
 const SmoothScroll = () => {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Scrollbar.init(window.document.querySelector('#smooth-scroll-div'), options)
-    }
+    // const timeout = setTimeout(() => {
+    //   if (typeof window !== 'undefined') {
+    //     Scrollbar.init(window.document.querySelector('#smooth-scroll-div'), options)
+    //   }
+    // }, 2000)
+    // return () => clearTimeout(timeout)
   }, [])
-  return null
+  return () => null
 }
 
 export default SmoothScroll

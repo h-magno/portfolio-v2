@@ -25,54 +25,54 @@ const NavbarMobileMenu = () => {
     <div id='menu-list' className='hidden sm:block shadow-lg  h-96 fixed -top-96 w-full z-50 pt-16 box-border translateDownMenu '>
       <ul className=' '>
         <li>
-          <Link href='/' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
+          <Link href='/' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
             <span>Portfólio</span>
             <div>
-              <StarIcon className='text-blue-600 dark:text-green-400' />
+              <StarIcon className='text-info dark:text-green-400' />
             </div>
           </Link>
         </li>
         <li
           className=''
         >
-          <Link href='/skills' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
+          <Link href='/skills' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
             <span> Skills</span>
             <div>
-              <InsightsOutlinedIcon className='text-blue-600 dark:text-green-400' />
+              <InsightsOutlinedIcon className='text-info dark:text-green-400' />
             </div>
           </Link>
         </li>
         <li>
-          <Link href='/about-me' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
+          <Link href='/about-me' className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
             <span>Sobre Mim </span>
             <div>
-              <HailOutlinedIcon className='text-blue-600 dark:text-green-400' />
+              <HailOutlinedIcon className='text-info dark:text-green-400' />
             </div>
           </Link>
         </li>
         <li>
           <button
             type='button'
-            className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'
+            className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'
             onClick={() => console.log('oi')}
           >
             <span>Currículo PDF</span>
 
             <div>
-              <DownloadIcon className='text-blue-600 dark:text-green-400' />
+              <DownloadIcon className='text-info dark:text-green-400' />
             </div>
           </button>
         </li>
-        <li className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
+        <li className='w-full border-b  pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300 cursor-pointer'>
           <button type='button'>
             Contato
           </button>
-          <div><PersonAddAlt1Icon className='text-blue-600 dark:text-green-400' /></div>
+          <div><PersonAddAlt1Icon className='text-info dark:text-green-400' /></div>
         </li>
-        <li className='w-full border-b pt-2 pl-5 pr-10 flex justify-between items-center  border-blue-600 dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300'>
+        <li className='w-full border-b pt-2 pl-5 pr-10 flex justify-between items-center  border-info dark:border-green-400 h-[45.7px] hover:bg-white hover:bg-opacity-5 duration-300'>
           <span>Tema</span>
           <div className='pb-2'>
-            <div className='w-24 h-[22px] flex justify-end relative bg-blue-600 dark:bg-gray-300 rounded-3xl'>
+            <div className='w-24 h-[22px] flex justify-end relative bg-info dark:bg-gray-300 rounded-3xl'>
               <div
                 className=' absolute left-0 rounded-l-3xl h-full w-10 flex justify-center items-center'
               >
@@ -98,7 +98,7 @@ const NavbarMobileMenu = () => {
           <span>Idioma</span>
 
           <div className='pb-2 relative'>
-            <div className='w-24 h-[22px] flex justify-end relative bg-blue-600 dark:bg-gray-300 rounded-3xl'>
+            <div className='w-24 h-[22px] flex justify-end relative bg-info dark:bg-gray-300 rounded-3xl'>
               <div
                 className=' absolute left-0 rounded-l-3xl h-full flex justify-center items-center '
               >

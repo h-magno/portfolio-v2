@@ -77,8 +77,8 @@ const NavbarMobile = (props: any) => {
           >
 
             {isVisible
-              ? <CloseIcon className='text-blue-600 dark:text-green-400 rotateIcon' />
-              : <MenuIcon className='text-blue-600 dark:text-green-400 z-10 rotateIcon' sx={{ fontSize: '30px', cursor: 'pointer' }} /> }
+              ? <CloseIcon className='text-info dark:text-green-400 rotateIcon' />
+              : <MenuIcon className='text-info dark:text-green-400 z-10 rotateIcon' sx={{ fontSize: '30px', cursor: 'pointer' }} /> }
           </button>
 
         </div>

@@ -7,6 +7,7 @@ import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import VolumeUpSharpIcon from '@mui/icons-material/VolumeUpSharp'
 import { useWindowSize } from 'react-use'
+import './HomeVideo.css'
 
 const usePlayerState = (videoPlayerRef: any) => {
   const [playerState, setPlayerState] = useState({
@@ -107,11 +108,11 @@ const HomeVideo = () => {
         <track kind='captions' />
       </video>
 
-      <div className='controls flex h-14 items-center rounded-b-3xl bg-[#615ac015]  dark:bg-[#0819416c] backdrop-blur-sm'>
+      <div id='bg-blur-video' className='controls flex h-14 items-center rounded-b-3xl bg-[#462f3f4e] dark:bg-[#0819416c] '>
         <button type='button' className='w-1/5 h-full rounded-bl-3xl' onClick={toggleVideoPlay}>
           {playerState.playing ? <PauseIcon className='text-black dark:text-white' /> : <PlayArrowSharpIcon className='text-black dark:text-white' />}
         </button>
-        <div className='flex items-center w-1/5 sm:w-2/5 h-full volume'>
+        <div className='flex items-center b  w-1/4 md:w-2/5 sm:w-2/5 h-full volume'>
           <button type='button' onClick={handleMute} className='flex items-center w-1/5 h-full mr-1'>
             {playerState.muted ? <VolumeOffIcon /> : <VolumeUpSharpIcon />}
           </button>
@@ -135,7 +136,7 @@ const HomeVideo = () => {
           className='w-3/5 bg-gray-300 dark:bg-blue-800 range range-info dark:range-success range-xs'
         />
 
-        <div className='w-1/5 px-5 sm:px-2 text-gray-900 f'>
+        <div className='w-1/5 px-5 sm:px-2 text-gray-900 '>
           <select className='w-full text-center rounded-xl' onChange={handlePlaybackRateChange} value={playbackRate}>
             {[1, 1.5, 2].map((speed: number) => (
               <option key={`speedChange_${ speed }`} value={speed}>

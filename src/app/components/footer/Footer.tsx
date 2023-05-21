@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Footer = () => (
-  <footer className='footer footer-center bg-success p-10 text-primary-content'>
+  <footer className='footer footer-center bg-info dark:bg-success p-10 text-primary-content'>
     <div>
       <svg
         width='50'

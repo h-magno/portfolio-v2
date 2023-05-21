@@ -4,7 +4,7 @@ import { useFrame, useLoader } from '@react-three/fiber'
 import { Mesh, TextureLoader } from 'three'
 
 const Sphere = (props: any) => {
-  const { darkMode } = props
+  const { darkMode, windowWidth } = props
   const boxRef = useRef<Mesh>(null!)
 
   useFrame(() => {

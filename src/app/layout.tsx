@@ -31,13 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       <html lang='pt-BR' className={`${ darkMode ? 'dark bg-[#000010]' : 'bg-gray-300' } overflow-x-hidden relative h-full`}>
-
         <body className='z-10 m-0 p-0 font-mono outline-transparent text-gray-900 dark:text-white'>
-
           {/* <div className='fixed left-0 top-0 h-screen w-96 bg-red-500' > a a a</div> */}
-
           <Navbar navbarRefIsInView={NavbarRefIsInView} />
-
           <div id='smooth-scroll-div' className='h-screen '>
             <div id='navbar-ref' ref={NavbarRef} className='absolute ' />
             <SmoothScroll />

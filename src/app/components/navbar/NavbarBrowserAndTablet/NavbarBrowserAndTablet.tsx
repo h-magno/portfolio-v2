@@ -18,12 +18,12 @@ const NavbarBrowserAndTablet = (props: any) => {
         }
         ${ navbarRefIsInView
           ? ' py-10'
-          : ' bg-[#e1e1e16b] dark:bg-[#0819418e] py-5 shadow-md'
+          : ' bg-[#cabec74e] dark:bg-[#0808418e] py-5 shadow-md'
         }
-        fixed top-0 z-50 box-border flex xl:w-[99.5%] lg:w-[99.2%] md:w-[99%] justify-between  px-14 font-mono uppercase text-white backdrop-blur-sm duration-500 sm:hidden`}
+        fixed top-0 z-50 box-border flex xl:w-[99.5%] lg:w-[99.2%] md:w-[99%] justify-between  px-14 font-mono uppercase text-white backdrop-blur-md duration-500 sm:hidden`}
       >
-        <div className='relative' >
-          <ul className='flex items-center justify-center space-x-5 text-blue-600 dark:text-green-400'>
+        <div className='relative'>
+          <ul className='flex items-center justify-center space-x-5 text-info dark:text-success'>
             <Link href='/' className='cursor-pointer '>
               .<span className=' dark:text-white text-gray-900 font-bold dark:font-normal'>Portfólio</span>()
             </Link>
@@ -46,7 +46,7 @@ const NavbarBrowserAndTablet = (props: any) => {
               ${ navbarRefIsInView && clientWidth > 1021
                 ? 'px-10 py-2'
                 : 'px-6 py-1 backdrop-blur-2xl'
-              } cursor-pointer rounded-xl border-2 b bg-opacity-20 hover:bg-opacity-30  border-blue-600 dark:border-blue-500 bg-blue-600 dark:bg-blue-500 text-blue-600 dark:text-blue-500  dark:bg-opacity-5 font-black uppercase duration-500 dark:hover:bg-opacity-10`}
+              } cursor-pointer rounded-xl border-2 b bg-opacity-20 hover:bg-opacity-30  border-info dark:border-blue-600 bg-info dark:bg-blue-600 text-info dark:text-blue-600  dark:bg-opacity-5 font-black uppercase duration-500 dark:hover:bg-opacity-10`}
           >
             Currículo PDF
           </label>
@@ -60,7 +60,7 @@ const NavbarBrowserAndTablet = (props: any) => {
             ${ navbarRefIsInView && clientWidth > 1021
               ? 'px-10 py-2'
               : 'px-6 py-1 backdrop-blur-2xl'
-            } cursor-pointer rounded-xl border-2  bg-opacity-20 hover:bg-opacity-30 dark:bg-opacity-5 dark:hover:bg-opacity-10  border-green-500 bg-green-500 text-green-500   font-black uppercase duration-500 `}
+            } cursor-pointer rounded-xl border-2  bg-opacity-20 hover:bg-opacity-30 dark:bg-opacity-5 dark:hover:bg-opacity-10  border-red-700 bg-red-700 text-red-700 dark:border-success dark:bg-success dark:text-success   font-black uppercase duration-500 `}
           >
             Contato
           </label>

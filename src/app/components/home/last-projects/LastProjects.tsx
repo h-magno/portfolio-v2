@@ -46,7 +46,7 @@ const LastProjects = () => {
 
       <div className='col-span-2 m-auto sm:col-span-3'>{useLoading('lastProjectSection')}</div>
       <div
-        className='relative w-full col-span-2 px-10 py-5 m-auto  bg-[#615ac04d] dark:bg-gray-300 rounded-3xl sm:col-span-3'
+        className='relative w-full col-span-2 px-10 py-5 m-auto backdrop-blur-sm bg-[#462f3f4e] dark:bg-gray-300 rounded-3xl sm:col-span-3'
       >
         <div
           className={` ${ isFiltering ? 'w-full h-full absolute left-0 top-0 z-30 bg-gray-600 dark:bg-gray-600 bg-opacity-25 dark:bg-opacity-25 rounded-3xl duration-500 ' : 'none opacity-0 duration-500' }`}

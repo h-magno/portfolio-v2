@@ -27,7 +27,7 @@ const HomePage = () => {
       <div
         className='paddingClamp lg:mb-10 lg:mt-20 sm:flex sm:mt-20 sm:flex-col-reverse md:flex md:flex-col-reverse md:pt-32 lg:grid lg:grid-cols-2 lg:pt-0'
       >
-        <div className='md:paddingClamp slideRightLeft sm:my-20 md:m-auto md:my-10 md:w-4/5 lg:my-0 lg:flex lg:w-full lg:items-center lg:justify-center lg:pt-16 xl:w-full 2xl:w-[800px]'>
+        <div className='md:paddingClamp slideRightLeft sm:my-20 md:m-auto md:my-10 md:w-4/5 lg:my-0 lg:flex lg:w-full lg:items-center lg:justify-center lg:pt-16 xl:w-full 2xl:w-[800px] backdrop-blur-sm '>
           <Tilt
             glareEnable
             tiltMaxAngleX={5}

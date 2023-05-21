@@ -54,18 +54,18 @@ const RepoSearch = (props: any) => {
         e.preventDefault()
         props.onSearch(state)
       }}
-      className='relative flex lg:flex-row md:flex-col sm:flex-col justify-between  dark:text-black'
+      className='relative flex justify-between dark:text-black sm:flex-col md:flex-col  lg:flex-row'
     >
-      <div className='w-full lg:p-10 md:p-0 sm:p-0 md:mb-5 sm:mb-5 text-center '>
-        <p className='mb-10 md:mb-2 sm:mb-2 font-black uppercase'> Pesquisa por nome </p>
+      <div className='w-full text-center sm:mb-5 sm:p-0 md:mb-5 md:p-0 lg:p-10 '>
+        <p className='mb-10 font-black uppercase sm:mb-2 md:mb-2'> Pesquisa por nome </p>
 
         <div className='w-full '>
           <TextField id='searchByName' className='w-full border-2 bg-white' onChange={(event) => setNameSearch(event.target.value)} />
         </div>
       </div>
 
-      <div className='h-full w-full flex-col gap-2 lg:p-10 md:p-0 sm:p-0 text-center'>
-        <p className='mb-10 md:mb-2 sm:mb-2 font-black uppercase'>Pesquisa por tecnologia</p>
+      <div className='h-full w-full flex-col gap-2 text-center sm:p-0 md:p-0 lg:p-10'>
+        <p className='mb-10 font-black uppercase sm:mb-2 md:mb-2'>Pesquisa por tecnologia</p>
 
         <TechsCheckbox onSelectedTechsChange={setAutocompleteSearch} />
       </div>
@@ -96,7 +96,7 @@ const RepoSearch = (props: any) => {
       {props.isFiltering ? (
         <button
           type='submit'
-          className='absolute right-5 bottom-5 z-40 rounded-xl border-2 border-red-500 bg-red-500 bg-opacity-10 px-6 py-2 font-black text-red-500 duration-500 hover:bg-opacity-20'
+          className='absolute right-5 bottom-5 z-40 rounded-xl border-2 border-red-600 bg-red-600 bg-opacity-10 px-6 py-2 font-black text-red-600 duration-500 hover:bg-opacity-20'
           onClick={() => {
             const autocompleteCleaner = document.querySelector('button[title="Clear"]')
 
@@ -119,7 +119,7 @@ const RepoSearch = (props: any) => {
       ) : (
         <button
           type='submit'
-          className='absolute right-5 bottom-5 rounded-xl border-2 border-blue-500 bg-blue-500 bg-opacity-10 px-6 py-2 font-black text-blue-500 duration-500 hover:bg-opacity-20'
+          className='absolute right-5 bottom-5 rounded-xl border-2 border-info bg-info bg-opacity-20 px-6 py-2 font-black text-info duration-500 hover:bg-opacity-30 dark:border-blue-600  dark:bg-blue-600 dark:bg-opacity-5 dark:text-blue-600 dark:hover:bg-opacity-20'
           onClick={() => {
             props.setIsFiltering(!props.isFiltering)
           }}

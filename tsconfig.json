@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/home/threejs-background/extra-components/camera-reference"
+    "src/app/components/home/threejs-background/background-compoents/camera-reference"
   ],
   "exclude": ["node_modules"]
 }
